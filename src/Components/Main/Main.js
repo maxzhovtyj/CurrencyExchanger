@@ -31,6 +31,12 @@ const Main = () => {
         setCurrencyB(event.target.value);
     };
 
+    const inputValidator = (event) => {
+        if (!/[0-9]/.test(event.key)) {
+            event.preventDefault();
+        }
+    }
+
     const formHandler = useCallback(async () => {
         try {
             if (inputValueB === 1) {
@@ -45,18 +51,18 @@ const Main = () => {
 
     useEffect(() => {
         formHandler()
-    }, [inputValueA, inputValueB, currencyA, currencyB, formHandler])
+    }, [currencyA, currencyB, formHandler])
 
     return (
         <main className={classes.mainWrapper}>
             <form>
                 <p className={classes.text}>From</p>
-                <TextField value={inputValueA} onChange={inputValueHandlerA} margin={"normal"} label="Value"
+                <TextField onKeyPress={inputValidator} value={inputValueA} onChange={inputValueHandlerA} margin={"normal"} label="Value"
                            variant="outlined"/>
                 <BasicSelect currency={currencyA} handleChange={handleChangeA}/>
 
                 <p className={classes.text}>To</p>
-                <TextField value={inputValueB} onChange={inputValueHandlerB} margin={"normal"} label="Value"
+                <TextField onKeyPress={inputValidator} value={inputValueB} onChange={inputValueHandlerB} margin={"normal"} label="Value"
                            variant="outlined"/>
                 <BasicSelect currency={currencyB} handleChange={handleChangeB}/>
                 <div className={classes.btn}><Button variant="contained" onClick={formHandler}>Exchange</Button></div>
