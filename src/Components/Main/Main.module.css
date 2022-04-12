@@ -1,0 +1,25 @@
+main {
+    padding: 4rem;
+}
+
+.mainWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.formItem {
+    margin: 2rem 0;
+}
+
+.text {
+    margin: 1rem 0;
+}
+
+.btn {
+    margin: 1rem 0;
+}
+
+.result h2 {
+    font-size: 3rem;
+}
+
